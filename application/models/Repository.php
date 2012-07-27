@@ -1,114 +1,93 @@
 <?php
-    
+
     /* Prevent Direct Access to this file */
-    if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest')
-    {
+    if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
     }
-    
+
     class Repository extends BaseRepository
     {
         public function getAllUsers()
         {
-            try
-            {
+            try {
                 $this->IncludeModelClass("User");
-            
+
                 $users = array();
                 $results = $this->db->select("users");
-                
-                if(!empty($results))
-                {
-                    foreach($results as $user)
-                    {
+
+                if (!empty($results)) {
+                    foreach ($results as $user) {
                         array_push($users, new User($user['pkid'], $user['uName'], $user['password'], $user['email']));
                     }
-                    
+
                     return $users;
-                }
-                else
+                } else
+
                     return false;
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-        
+
         public function getUserByUserName($uName)
         {
-            try
-            {
+            try {
                 $this->IncludeModelClass("User");
-                
+
                 $users = array();
                 $results = $this->db->select("users", array("*"), array("uName" => $uName));
-                
-                if(!empty($results))
-                {
-                    foreach($results as $user)
-                    {
+
+                if (!empty($results)) {
+                    foreach ($results as $user) {
                         array_push($users, new User($user['pkid'], $user['uName'], $user['password'], $user['email']));
                     }
-                    
+
                     return $users;
-                }
-                else
+                } else
+
                     return false;
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-        
+
         public function updateUserEmail($id, $new_email)
         {
-            try
-            {
+            try {
                 $this->IncludeModelClass("User");
-                
+
                 $upEmail = $this->db->update("users", array("email" => $new_email), array("pkid" => $id));
-                
+
                 return $upEmail;
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-        
+
         public function insertNewUser($uName, $password, $email)
         {
-            try
-            {
+            try {
                 $this->IncludeModelClass("User");
-                
+
                 $result = $this->db->insert("users", array("uName" => $uName, "password" => $password, "email" => $email));
-                
+
                 return $result;
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-        
+
         public function deleteUser($id)
         {
-            try
-            {
+            try {
                 $this->IncludeModelClass("User");
-                
+
                 $result = $this->db->delete("users", array("pkid" => $id));
-                
+
                 return $result;
-            }
-            catch(Exception $e)
-            {
+            } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
     }
-?>

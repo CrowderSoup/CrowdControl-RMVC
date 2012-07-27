@@ -1,7 +1,6 @@
 <?php
     /* Prevent Direct Access to this file */
-    if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest')
-    {
+    if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
     }
@@ -9,10 +8,9 @@
 
 <article>
     <h3>Users</h3>
-    
+
     <?php
-        if($users != null)
-        {
+        if ($users != null) {
     ?>
             <table border="1" cellpadding="2" cellspacing="2">
                 <tr>
@@ -21,8 +19,7 @@
                     <th>Email</th>
                 </tr>
     <?php
-            foreach($users as $user)
-            {
+            foreach ($users as $user) {
     ?>
                 <tr>
                     <td><?= $user->uName ?></td>
@@ -34,22 +31,18 @@
     ?>
             </table>
     <?php
-        }
-        else
-        {
+        } else {
     ?>
             <p>No Users found!</p>
     <?php
         }
     ?>
-    
+
     <ul>
         <?php
-            
-            if(isset($data))
-            {
-                foreach($data as $key => $value)
-                {
+
+            if (isset($data)) {
+                foreach ($data as $key => $value) {
                     echo "<li>" . $key . " => " . $value . "</li>";
                 }
             }
