@@ -1,17 +1,46 @@
 <?php
+    /**
+     * Router.php contains the Router class
+     * @author Aaron Crowder <aaron@aaroncrowder.com>
+     */
 
-    /* Prevent Direct Access to this file */
+    // Prevent Direct Access to this file
     if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
     }
-
+    
+    /**
+     * Router class
+     * 
+     * The Router class handles the request, and passes it off to the
+     * appropriate controller and action. If no appropriate controller or action
+     * is found then a 404 is fired and our 404 error page is displayed.
+     */
     class Router
     {
-        private $path, $controller, $action;
+        /**
+         * @var string The controller that we're routing to.
+         */
+        private $controller;
+        
+        /**
+         * @var string The action that we're going to call.
+         */
+        private $action;
+        
+        /**
+         * @var array The data that we're passing to the controller->action.
+         */
         private $data = array();
-        static $instance;
-
+        
+        /**
+         * __construct()
+         *
+         * Construct the router object. Take the request and parse it into
+         * an array that we can later work with to find the appropriate
+         * controller and action.
+         */
         public function __construct()
         {
             $request = '';
@@ -32,7 +61,16 @@
                 }
             }
         }
-
+        
+        /**
+         * route($registry)
+         * 
+         * The route() function takes the registry that we've built in index.php
+         * and routes the users request.
+         * 
+         * @param Registry $registry A Registry object that holds config data
+         * that will be used later in the application.
+         */
         public function route($registry)
         {
             $file = 'application/controllers/' . $this->controller . 'Controller.php';
