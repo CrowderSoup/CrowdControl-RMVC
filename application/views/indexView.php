@@ -48,4 +48,8 @@
             }
         ?>
     </ul>
+    
+    <?php
+        phpinfo();
+    ?>
 </article>
