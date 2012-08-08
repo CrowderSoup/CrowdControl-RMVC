@@ -29,6 +29,11 @@
             $this->db = new Database($database['host'], $database['database'], $database['user'], $database['password']);
         }
         
+        function __destruct()
+        {
+            $this->db->closeConn();
+        }
+        
         /**
          * IncludeModelClass($name)
          * 
