@@ -29,8 +29,6 @@
                 $users = $this->repository->getAllUsers();
             }
 
-            util::var_dump($users);
-
             $this->view->users = $users;
 
             $this->view->pageTitle = 'Home';
