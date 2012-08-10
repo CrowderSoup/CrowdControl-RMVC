@@ -1,5 +1,12 @@
 <?php
-    /* Prevent Direct Access to this file */
+    /**
+     * headerView.php contains the view definition for the header / top
+     * part of our application.
+     * 
+     * @author Aaron Crowder <aaron@aaroncrowder.com>
+     */
+    
+    // Prevent Direct Access to this file
     if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
@@ -10,11 +17,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>
-        <?php
-            echo SITETITLE . "::" . $pageTitle;
-        ?>
-    </title>
+    <title><?= SITETITLE . "::" . $pageTitle ?></title>
+    <?php 
+        foreach($registry->styles as $style) {
+            echo '<link rel="stylesheet" href="' . $style . '" />';
+        }
+    ?>
 </head>
 <body>
     <header>

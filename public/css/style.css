@@ -1,0 +1,28 @@
+html, body {
+	padding: 0px;
+	margin: 0px;
+	font-family: Arial;
+}
+
+table {
+	border: solid 1px #000000;
+	margin: 2px;
+}
+
+table tr {
+	border: solid 1px #000000;
+	padding: 4px;
+	margin: 2px;
+}
+
+table tr th {
+	border: solid 1px #000000;
+	padding: 4px;
+	margin: 2px;
+}
+
+table tr td {
+	border: solid 1px #000000;
+	padding: 4px;
+	margin: 2px;
+}

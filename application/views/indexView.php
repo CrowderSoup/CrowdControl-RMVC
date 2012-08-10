@@ -1,5 +1,11 @@
 <?php
-    /* Prevent Direct Access to this file */
+    /**
+     * indexView.php contains the view definition for our main
+     * controller / action.
+     * @author Aaron Crowder <aaron@aaroncrowder.com>
+     */
+    
+    // Prevent Direct Access to this file
     if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
@@ -12,7 +18,7 @@
     <?php
         if ($users != null) {
     ?>
-            <table border="1" cellpadding="2" cellspacing="2">
+            <table>
                 <tr>
                     <th>User Name</th>
                     <th>Password</th>
@@ -48,8 +54,4 @@
             }
         ?>
     </ul>
-    
-    <?php
-        phpinfo();
-    ?>
 </article>

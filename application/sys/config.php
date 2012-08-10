@@ -21,6 +21,8 @@
      * @const string Set the base uri (the root URL of the application)
      */
     const BASEURI = 'http://crowdcontrol.loc/';
+    
+    const BASECSSURI = 'http://crowdcontrol.loc/public/css/';
      
     /**
      * @const string The title of the site
@@ -48,3 +50,9 @@
         'user'      => 'root',
         'password'  => 'p@ssw0rd'
     );
+    
+    /**
+     * @var array All the Stylesheets that should be included in the header of
+     * our application.
+     */
+    $styles = array(BASECSSURI . 'style.css');
