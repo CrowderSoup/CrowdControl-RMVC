@@ -30,7 +30,7 @@
             if(!empty($URIdata) && is_array($URIdata))
                 $this->view->data = $URIdata;
 
-            $this->view->users = $this->repository->getAllUsers();
+            //$this->view->users = $this->repository->getAllUsers();
 
             $this->view->pageTitle = 'Home';
 
