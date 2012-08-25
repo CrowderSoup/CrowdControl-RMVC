@@ -12,7 +12,7 @@
     }
     
     /**
-     * IndexController class
+     * IndexController class exends @link BaseController
      *
      * This is the main controller for the application.
      */
@@ -29,8 +29,6 @@
         {
             if(!empty($URIdata) && is_array($URIdata))
                 $this->view->data = $URIdata;
-
-            //$this->view->users = $this->repository->getAllUsers();
 
             $this->view->pageTitle = 'Home';
 

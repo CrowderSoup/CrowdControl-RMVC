@@ -1,19 +1,57 @@
 <?php
-
-    /* Prevent Direct Access to this file */
+    /**
+     * Repository.php contains the class definition for our Repository.
+     * @author Aaron Crowder <aaron@aaroncrowder.com>
+     */
+    
+    // Prevent Direct Access to this file
     if (!defined('BASEPATH') && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
         header('HTTP/1.0 403 Forbidden');
         exit;
     }
-
+    
+    /**
+     * User class extends @link BaseModel
+     * 
+     * User class is an object that mirrors the structure of the User
+     * table in the database.
+     */
     class User extends BaseModel
     {
-        public $pkid, $uName, $password, $email;
-
+        /**
+         * @var int
+         */
+        public $pkid;
+        
+        /**
+         * @var string
+         */
+        public $uName;
+        
+        /**
+         * @var string
+         */
+        public $password;
+        
+        /**
+         * @var string
+         */
+        public $email;
+        
+        /**
+         * __construct()
+         * 
+         * Set all object parameters when object is instantiated.
+         * 
+         * @param int $pkid
+         * @param string $uName
+         * @param string $password
+         * @param string $email
+         */
         function __construct($pkid, $uName, $password, $email)
         {
-            $this->pkid     = $pkid;
-            $this->uName    = $uName;
+            $this->pkid = $pkid;
+            $this->uName = $uName;
             $this->password = $password;
             $this->email = $email;
         }

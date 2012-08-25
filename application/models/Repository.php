@@ -9,9 +9,20 @@
         header('HTTP/1.0 403 Forbidden');
         exit;
     }
-
+    
+    /**
+     * Repository class extends @link BaseRepository
+     * 
+     * This is our main repository. You may add more just like this one,
+     * or you may just add all your data access functions here.
+     */
     class Repository extends BaseRepository
     {
+        /**
+         * getAllUsers()
+         * 
+         * Gets and returns an array of @link User objects
+         */
         public function getAllUsers()
         {
             try {
@@ -33,7 +44,15 @@
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-
+        
+        /**
+         * getUserByUserName()
+         * 
+         * Gets and returns a @link User object containing a user gotten
+         * by User Name.
+         * 
+         * @param string $uName
+         */
         public function getUserByUserName($uName)
         {
             try {
@@ -55,7 +74,15 @@
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-
+        
+        /**
+         * updateUserEmail()
+         * 
+         * Update a @link User's email address
+         * 
+         * @param int $id
+         * @param string $new_email
+         */
         public function updateUserEmail($id, $new_email)
         {
             try {
@@ -68,7 +95,16 @@
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-
+        
+        /**
+         * insertNewUser()
+         * 
+         * Insert a new @link User into the database.
+         * 
+         * @param string $uName
+         * @param string $password
+         * @param string $email
+         */
         public function insertNewUser($uName, $password, $email)
         {
             try {
@@ -81,7 +117,13 @@
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
-
+        
+        /**
+         * deleteUser()
+         * 
+         * Delete a @link User from the database.
+         * @param unknown_type $id
+         */
         public function deleteUser($id)
         {
             try {
