@@ -28,12 +28,13 @@
         public function index($URIdata)
         {
             if(!empty($URIdata) && is_array($URIdata))
-                $this->view->data = $URIdata;
+                $data['URIdata'] = $URIdata;
 
-            $this->view->pageTitle = 'Home';
+            $data['pageTitle'] = 'Home';
+            $data['styles'] = $this->registry->styles;
 
-            $this->view->show('header');
-            $this->view->show('index');
-            $this->view->show('footer');
+            $this->view->show('header', $data);
+            $this->view->show('index', $data);
+            $this->view->show('footer', $data);
         }
     }

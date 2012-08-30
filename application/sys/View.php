@@ -20,33 +20,14 @@
     class View
     {
         /**
-         * @var array Contains all the data that needs to be passed from the
-         * controller to our View.
-         */
-        private $vars = array();
-        
-        /**
-         * __set($index, $value)
-         * 
-         * Puts data in the $vars array.
-         * 
-         * @param string $index The name by which this piece of data will be 
-         * represented.
-         * @param mixed $value The actual data.
-         */
-        public function __set($index, $value)
-        {
-            $this->vars[$index] = $value;
-        }
-        
-        /**
          * show($viewName)
          * 
          * Show the specified view.
          * 
          * @param string $viewName The name of the view we need to display
+         * @param array $data The data that we need to pass into the view.
          */
-        public function show($viewName)
+        public function show($viewName, $data = array())
         {
             try {
                 $file = 'application/views/' . $viewName . 'View.php';
@@ -54,10 +35,8 @@
                 if (!file_exists($file))
                     throw new Exception('View ' . $viewName . ' not found.');
                 else {
-                    foreach ($this->vars as $key => $value) {
-                        $$key = $value;
-                    }
-
+                    extract($data);
+                    
                     include($file);
                 }
             } catch (Exception $e) {

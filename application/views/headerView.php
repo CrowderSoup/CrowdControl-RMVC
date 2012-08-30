@@ -19,7 +19,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title><?= SITETITLE . "::" . $pageTitle ?></title>
     <?php 
-        foreach($registry->styles as $style) {
+        foreach($styles as $style) {
             echo '<link rel="stylesheet" href="' . $style . '" />';
         }
     ?>

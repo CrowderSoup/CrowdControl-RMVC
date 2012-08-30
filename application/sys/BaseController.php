@@ -29,9 +29,6 @@
         {
             $this->view = new View();
             $this->registry = $registry;
-            
-            // Pass the registry off to the view in case we need anything there
-            $this->view->registry = $this->registry;
 
             // Include all the utils we're going to need
             foreach ($this->registry->utils as $util) {
