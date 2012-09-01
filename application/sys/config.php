@@ -23,6 +23,7 @@
     const BASEURI = 'http://crowdcontrol.loc/';
     
     const BASECSSURI = 'http://crowdcontrol.loc/public/css/';
+    const BASEJSURI = 'http://crowdcontrol.loc/public/js/';
      
     /**
      * @const string The title of the site
@@ -55,4 +56,6 @@
      * @var array All the Stylesheets that should be included in the header of
      * our application.
      */
-    $styles = array(BASECSSURI . 'style.css');
+    $styles = array(BASECSSURI . 'bootstrap.min.css', BASECSSURI . 'style.css');
+    
+    $js = array(BASEJSURI . 'bootstrap.min.js');

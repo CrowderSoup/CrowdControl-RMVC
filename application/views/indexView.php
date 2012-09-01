@@ -12,8 +12,9 @@
     }
 ?>
 
-<article>
-    <h3>A Simple Site</h3>
-    
-    <p>A simple site to test and play with.</p>
-</article>
+<div class="container">
+
+    <h1>Starter template</h1>
+    <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones PHP framework.</p>
+
+</div> <!-- /container -->

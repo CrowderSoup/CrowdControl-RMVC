@@ -18,6 +18,7 @@
     $registry->utils    = $utils;
     $registry->database = $database;
     $registry->styles = $styles;
+    $registry->js = $js;
     
     // Route our request
     $router->route($registry);

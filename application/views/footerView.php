@@ -5,6 +5,10 @@
         exit;
     }
 ?>
-
+    <?php 
+        foreach($js as $script) {
+            echo '<script type="text/javascript" scr="' . $script . '"></script>';
+        }
+    ?>
     </body>
 </html>
