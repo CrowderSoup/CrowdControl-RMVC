@@ -5,6 +5,11 @@
         exit;
     }
 ?>
+        <hr/>
+        <footer>
+            Copyright &copy; <a href="http://aaroncrowder.com" target="_blank">Aaron Crowder</a>
+        </footer>
+    </div> <!-- /container -->
     <?php 
         foreach($js as $script) {
             echo '<script type="text/javascript" scr="' . $script . '"></script>';
