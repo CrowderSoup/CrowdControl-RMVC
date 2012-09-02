@@ -20,6 +20,8 @@
     
     <h1>CrowdControl RMVC</h1>
     
+    <?= util::var_dump($users->fetchAll()) ?>
+    
     <div class="row">
         <div class="span4">
             <h2>RMVC</h2>

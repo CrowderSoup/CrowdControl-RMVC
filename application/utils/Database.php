@@ -77,7 +77,7 @@
          * Gets the last query that was run. Useful for diagnostic and debugging
          * purposes.
          */
-        public function getLastQuery()
+        public function getQueryStr()
         {
             return $this->query;
         }
@@ -96,6 +96,7 @@
         public function select($table, $values = array(), $where = array())
         {
             $query = "SELECT ";
+            $data = array();
 
             if (!empty($values)) {
                 $iCount = 0;
@@ -118,7 +119,6 @@
                     $arrWhere = $this->buildWhere($where);
                     if ($arrWhere !== false) {
                         $query .= $arrWhere[0];
-                        $data = array();
 
                         foreach ($arrWhere[1] as $item) {
                             array_push($data, $item);
@@ -130,18 +130,9 @@
 
             $this->query = $query;
 
-            try {
-                $statement = $this->dbh->prepare($this->query);
+            $sel = $this->exec($data);
 
-                if(!empty($data))
-                    $statement->execute($data);
-                else
-                    $statement->execute();
-
-                return $statement->fetchAll();
-            } catch (PDOException $e) {
-                return $e->getMessage();
-            }
+            return $sel->fetchAll();
         }
         
         /**
@@ -189,14 +180,9 @@
 
                 $this->query = $query;
 
-                try {
-                    $ins = $this->dbh->prepare($this->query);
-                    $ins->execute($data);
+                $ins = $this->exec($data);
 
-                    return $ins->rowCount();
-                } catch (PDOException $e) {
-                    return $e->getMessage();
-                }
+                return $ins->rowCount();
             } else {
                 throw new Exception("You cannot perform an INSERT action without passing any values.");
             }
@@ -247,14 +233,9 @@
 
                 $this->query = $query;
 
-                try {
-                    $up = $this->dbh->prepare($this->query);
-                    $up->execute($data);
+                $up = $this->exec($data);
 
-                    return $up->rowCount();
-                } catch (PDOException $e) {
-                    return $e->getMessage();
-                }
+                return $up->rowCount();
             } else {
                 throw new Exception("You cannot perform an UPDATE action without passing a where array.");
             }
@@ -291,20 +272,35 @@
                 }
 
                 $this->query = $query;
+                
+                $del = $this->exec($data);
 
-                try {
-                    $del = $this->dbh->prepare($this->query);
-                    $del->execute($data);
-
-                    return $del->rowCount();
-                } catch (PDOException $e) {
-                    return $e->getMessage();
-                }
+                return $del->rowCount();
             } else {
                 throw new Exception("You cannot perform an DELETE action without passing a where array.");
             }
         }
-
+        
+        /**
+         * rawQuery()
+         * 
+         * Allows you to write and execute your own SQL Statement.
+         * 
+         * @param string $SQL Your SQL query with placeholders for data
+         * @param array $data Your array of data to fill in the placeholders
+         */
+        public function rawQuery($SQL, $data)
+        {
+            $this->query = $SQL;
+            
+            return $this->exec($data);
+        }
+        
+        /**
+         * closeConn()
+         * 
+         * Closes the connection to the database
+         */
         public function closeConn()
         {
             $this->dbh = null;
@@ -355,5 +351,25 @@
             }
 
             return array($query, $data);
+        }
+        
+        /**
+         * exec()
+         * 
+         * Executes a PDO Prepared Statement.
+         * 
+         * @param array $data
+         * @return PDOStatement
+         */
+        private function exec($data)
+        {
+            try {
+                $q = $this->dbh->prepare($this->query);
+                $q->execute($data);
+                
+                return $q;
+            } catch(PDOException $e) {
+                return $e->getMessage();
+            }
         }
     }

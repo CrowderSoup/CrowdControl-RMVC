@@ -136,4 +136,17 @@
                 echo "Caught Exception: " . $e->getMessage();
             }
         }
+    
+        public function getAllUsersSCLR()
+        {
+            try {
+                $this->IncludeModelClass("User");
+                
+                $result = $this->db->rawQuery("SELECT * FROM users", array());
+                
+                return $result;
+            } catch (Exception $e) {
+                echo "Caught Exception: " . $e->getMessage();
+            }
+        }
     }
