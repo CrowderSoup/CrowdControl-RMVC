@@ -29,6 +29,16 @@
      * @const string The title of the site
      */
     const SITETITLE = 'CrowdControl MVC';
+    
+    /**
+     * @const string The main controller
+     */
+    const INDEXCONTROLLER = 'Index';
+    
+    /**
+     * @const string The main action
+     */
+    const INDEXACTION = 'index';
 
     /**
      * System variables

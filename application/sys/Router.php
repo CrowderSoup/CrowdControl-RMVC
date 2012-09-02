@@ -50,8 +50,8 @@
             $split = explode('/',trim($request,'/'));
             $iCount = count($split);
 
-            $this->controller = !empty($split[0]) ? ucfirst($split[0]) : 'Index';
-            $this->action = !empty($split[1]) ? $split[1] : 'index';
+            $this->controller = !empty($split[0]) ? ucfirst($split[0]) : INDEXCONTROLLER;
+            $this->action = !empty($split[1]) ? $split[1] : INDEXACTION;
 
             if ($iCount > 2) {
                 for ($i = 0; $i < $iCount; $i++) {
