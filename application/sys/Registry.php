@@ -3,12 +3,6 @@
      * Registry.php contains the Registry class
      * @author Aaron Crowder <aaron@aaroncrowder.com>
      */
-
-    // Prevent Direct Access to this file
-    if (!defined('BASEPATH')) {
-        header('HTTP/1.0 403 Forbidden');
-        exit;
-    }
     
     /**
      * Registry class
