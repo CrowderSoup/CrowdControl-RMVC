@@ -31,9 +31,9 @@
                     }
 
                     return $users;
-                } else
-
+                } else {
                     return false;
+                }
             } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
@@ -61,9 +61,9 @@
                     }
 
                     return $users;
-                } else
-
+                } else {
                     return false;
+                }
             } catch (Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }

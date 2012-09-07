@@ -327,14 +327,14 @@
                         if($iCount != $wCount)
                             $query .= " " . $Value[1] . " ";
                     } elseif (count($Value) == 3) {
-                        $query .= $Column . "? ?";
-                        array_push($data, $Value[0], $Value[1], $Value[2]);
+                        $query .= $Column . " " . $Value[0] . " ?";
+                        array_push($data, $Value[1]);
 
                         if($iCount !=  $wCount)
                             $query .= " " . $Value[2] . " ";
-                    } else
-
+                    } else {
                         return false;
+                    }
                 } else {
                     $query .= $Column . " = ?";
                     array_push($data, $Value);

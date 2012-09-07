@@ -33,6 +33,11 @@
         public $email;
         
         /**
+         * @var string
+         */
+        public $salt;
+        
+        /**
          * __construct()
          * 
          * Set all object parameters when object is instantiated.
@@ -41,12 +46,14 @@
          * @param string $uName
          * @param string $password
          * @param string $email
+         * @param string $salt
          */
-        function __construct($pkid, $uName, $password, $email)
+        function __construct($pkid, $uName, $password, $email, $salt)
         {
             $this->pkid = $pkid;
             $this->uName = $uName;
             $this->password = $password;
             $this->email = $email;
+            $this->salt = $salt;
         }
     }
