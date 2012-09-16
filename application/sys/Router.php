@@ -38,8 +38,8 @@
         public function __construct()
         {
             $request = '';
-            if(isset($_GET['q']))
-                $request = $_GET['q'];
+            if(isset($_GET['request']))
+                $request = $_GET['request'];
 
             $split = explode('/',trim($request,'/'));
             $iCount = count($split);

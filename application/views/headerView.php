@@ -31,6 +31,7 @@
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         <li class="active"><a href="<?= BASEURI ?>">Home</a></li>
+                        <li><a href="<?= BASEURI ?>login">Login</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

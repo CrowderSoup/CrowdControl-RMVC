@@ -12,11 +12,6 @@
 class Auth
 {
     /**
-     * @var User
-     */
-    public $User = null;
-    
-    /**
      * @var boolean
      */
     public $loggedIn = false;
@@ -33,8 +28,14 @@ class Auth
      */
     private $cost = '$10';
     
+    /**
+     * @var array
+     */
     private $session;
     
+    /**
+     * @var Database
+     */
     private $db;
     
     public function __construct($database)
@@ -49,9 +50,8 @@ class Auth
                 if($results) {
                     $this->session = $results[0];
                     
-                    if($this->session['ip'] == $_SERVER['REMOTE_ADDR']) {
+                    if($this->session['ip'] == $_SERVER['REMOTE_ADDR'] && strtotime($this->session['exp_date']) <= time()) {
                         $this->loggedIn = true;
-                        $this->GetUser();
                     }
                 }
             } catch(Exception $e) {
@@ -77,8 +77,12 @@ class Auth
             
             if($hashArray[0] == $results[0]['password']) {
                 $this->loggedIn = true;
-                $this->User = new User($results[0]['pkid'], $results[0]['uName'], $results[0]['password'], $results[0]['email'], $results[0]['salt']);
                 $_SESSION['uid'] = $this->User->pkid;
+                
+                $result = $this->db->insert("sessions", array('fk_uid' => $_SESSION['uid'], 'ip' => $_SERVER['REMOTE_ADDR'], 'exp_date' => date('Y-m-d H:i:s', time() + 1209600)));
+                if(!$result) {
+                    return false;
+                }
                 
                 return $this->loggedIn;
             }
@@ -97,7 +101,12 @@ class Auth
     public function LogOut()
     {
         if(session_destroy()) {
-            return true;
+            $result = $this->db->delete('sessions', array('fk_uid' => $_SESSION['uid']));
+            if($result) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
@@ -138,35 +147,7 @@ class Auth
             }
         }
     }
-    
-    /**
-     * GetUser()
-     * 
-     * Get's and sets this objects User parameter (which is in fact a User Model)
-     * 
-     * @return boolean
-     */
-    private function GetUser()
-    {
-        if($this->loggedIn) {
-            $results = $this->db->select('users', array('*'), array('pkid' => $_SESSION['uid']));
-            
-            if(!empty($results)) {
-                $this->User = new User(
-                                                $results[0]['pkid'], 
-                                                $results[0]['uName'], 
-                                                $results[0]['password'], 
-                                                $results[0]['email'], 
-                                                $results[0]['salt']
-                                        );
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-    
-    
+
     /**
      * HashPass()
      * 

@@ -50,7 +50,7 @@
     /**
      * @var array Array of the required Utils
      */
-    $utils = array('Database', 'util');
+    $utils = array('Database', 'util', 'Auth');
     
     /**
      * @var array Database properties
