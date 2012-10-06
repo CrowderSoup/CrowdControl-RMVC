@@ -12,12 +12,10 @@
     }
 ?>
     
-    <h1>CrowdControl RMVC</h1>
-    
     <div class="row">
         <div class="span3">
             <h4>Already registered?</h4>
-            <p>If you're already registered then <a href="<?= BASEURI ?>login">go login</a>.
+            <p>If you're already registered then <?= Nav::BuildTextLink(array('go login', 'login')) ?>.
         </div>
         <div class="span9">
             <h2>Register</h2>

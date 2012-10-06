@@ -47,6 +47,9 @@
             $this->controller = !empty($split[0]) ? ucfirst($split[0]) : INDEXCONTROLLER;
             $this->action = !empty($split[1]) ? $split[1] : INDEXACTION;
 
+            array_push($this->data, $this->controller);
+            array_push($this->data, $this->action);
+
             if ($iCount > 2) {
                 for ($i = 0; $i < $iCount; $i++) {
                     if ($i > 1) {

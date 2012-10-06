@@ -18,8 +18,6 @@
         All you get is this message and an awesome PHP framework.</p>
     </div>
     
-    <h1>CrowdControl RMVC</h1>
-    
     <div class="row">
         <div class="span4">
             <h2>RMVC</h2>

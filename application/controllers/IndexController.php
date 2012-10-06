@@ -27,6 +27,7 @@
             $data['pageTitle'] = 'Home';
             $data['styles'] = $this->registry->styles;
             $data['js'] = $this->registry->js;
+            $data['request'] = $this->registry->request;
 
             $this->view->show('header', $data);
             $this->view->show('index', $data);

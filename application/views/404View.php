@@ -14,5 +14,6 @@
 
 <article>
     <h3>404</h3>
-    <p>We're sorry but this page could not be found.</p>
+    <p>Uh oh, looks like you've torn a whole in the internet!</p>
+    <img src="<?= BASEIMGURI . '404error.jpg' ?>" alt="404 Code" />
 </article>

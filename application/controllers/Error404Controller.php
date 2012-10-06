@@ -28,10 +28,14 @@
         public function index($URIdata)
         {
             if(!empty($URIdata) && is_array($URIdata))
-                $this->view->data = $URIdata;
+                $data['URIdata'] = $URIdata;
 
-            $this->view->show('header');
-            $this->view->show('404');
-            $this->view->show('footer');
+            $data['pageTitle'] = 'Home';
+            $data['styles'] = $this->registry->styles;
+            $data['js'] = $this->registry->js;
+
+            $this->view->show('header', $data);
+            $this->view->show('404', $data);
+            $this->view->show('footer', $data);
         }
     }

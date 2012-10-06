@@ -16,6 +16,11 @@
          * @var array Holds all the data passed into the Registry
          */
         private $vars = array();
+
+        function __construct($request)
+        {
+            $this->request = $request;
+        }
         
         /**
          * __set($index, $value)

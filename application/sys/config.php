@@ -24,6 +24,7 @@
     
     const BASECSSURI = 'http://crowdcontrol.loc/public/css/';
     const BASEJSURI = 'http://crowdcontrol.loc/public/js/';
+    const BASEIMGURI = 'http://crowdcontrol.loc/public/img/';
      
     /**
      * @const string The title of the site
@@ -50,7 +51,7 @@
     /**
      * @var array Array of the required Utils
      */
-    $utils = array('Database', 'util', 'Auth');
+    $utils = array('Database', 'util', 'Auth', 'Nav');
     
     /**
      * @var array Database properties

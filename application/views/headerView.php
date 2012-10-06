@@ -28,14 +28,24 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">CrowdControl RMVC</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="<?= BASEURI ?>">Home</a></li>
-                        <li><a href="<?= BASEURI ?>login">Login</a></li>
+                        <?= Nav::BuildMainNav(array(
+                                                    'Home' => array('index', 
+                                                                    'index'), 
+                                                    'Login' => array('login',
+                                                                     'index'),
+                                                    'test' => array('test',
+                                                                    'index')), $URIdata) ?>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </div>
     </div>
-    
     <div class="container">
