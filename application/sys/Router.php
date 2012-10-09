@@ -14,36 +14,6 @@
     class Router
     {
         /**
-         * @var string The controller that we're routing to.
-         */
-        private $controller;
-        
-        /**
-         * @var string The action that we're going to call.
-         */
-        private $action;
-        
-        /**
-         * __construct()
-         *
-         * Construct the router object. Take the request and parse it into
-         * an array that we can later work with to find the appropriate
-         * controller and action.
-         */
-        public function __construct()
-        {
-            $request = '';
-            if(isset($_GET['request']))
-                $request = $_GET['request'];
-
-            $split = explode('/',trim($request,'/'));
-            $iCount = count($split);
-
-            $this->controller = !empty($split[0]) ? ucfirst($split[0]) : INDEXCONTROLLER;
-            $this->action = !empty($split[1]) ? $split[1] : INDEXACTION;
-        }
-        
-        /**
          * route($registry)
          * 
          * The route() function takes the registry that we've built in index.php
@@ -54,12 +24,10 @@
          */
         public function route($registry)
         {
-            $file = 'application/controllers/' . $this->controller . 'Controller.php';
+            $file = 'application/controllers/' . $registry->request->GET['Controller'] . 'Controller.php';
             if (is_readable($file)) {
                 include $file;
-                $class = $this->controller . 'Controller';
-
-                $registry->request->GET['Controller'] = $this->controller;
+                $class = $registry->request->GET['Controller'] . 'Controller';
             } else {
                 include 'application/controllers/Error404Controller.php';
                 $class = 'Error404Controller';
@@ -68,10 +36,8 @@
             }
             $controller = new $class($registry);
 
-            if (is_callable(array($controller, $this->action))) {
-                $action = $this->action;
-
-                $registry->request->GET['Action'] = $this->action;
+            if (is_callable(array($controller, $registry->request->GET['Action']))) {
+                $action = $registry->request->GET['Action'];
             } else {
                 $action = 'index';
 

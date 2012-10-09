@@ -39,9 +39,7 @@
 
         function __construct()
         {
-        	foreach($_GET as $key => $val) {
-        		$this->GET[$key] = strip_tags($val);
-        	}
+            $this->GETData();
 
         	foreach($_POST as $key => $val) {
         		$this->POST[$key] = strip_tags($val);
@@ -60,5 +58,22 @@
         	}
 
             unset($_GET, $_POST, $_REQUEST, $_FILES, $_COOKIE);
+        }
+
+        private function GETData()
+        {
+            $request = '';
+            if(isset($_GET['request']))
+                $request = $_GET['request'];
+
+            $gData = explode('/',trim($request,'/'));
+            $iCount = count($gData);
+
+            $this->GET['Controller'] = !empty($gData[0]) ? ucfirst($gData[0]) : INDEXCONTROLLER;
+            $this->GET['Action'] = !empty($gData[1]) ? $gData[1] : INDEXACTION;
+
+            for($i = 2; $i < $iCount; $i++) {
+                $this->GET['gData_' . ($i - 2)] = $gData[$i];
+            }
         }
     }
