@@ -8,7 +8,6 @@
         <hr/>
         <footer>
             Copyright &copy; <a href="http://aaroncrowder.com" target="_blank">Aaron Crowder</a>
-            <h6>URIdata</h6><?= util::var_dump($URIdata) ?>
             <h6>Request</h6><?= util::var_dump($request) ?>
         </footer>
     </div> <!-- /container -->

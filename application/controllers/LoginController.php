@@ -16,17 +16,12 @@
          * index()
          * 
          * The index action for our controller
-         * 
-         * @param array $URIdata
          */
-        public function index($URIdata)
+        public function index()
         {
             $auth = new Auth($this->registry->database);
 
             if(!$auth->loggedIn) {
-                if(!empty($URIdata) && is_array($URIdata))
-                    $data['URIdata'] = $URIdata;
-
                 $data['pageTitle'] = 'Login';
                 $data['styles'] = $this->registry->styles;
                 $data['js'] = $this->registry->js;

@@ -58,5 +58,7 @@
         	foreach ($_COOKIE as $key => $val) {
         		$this->COOKIE[$key] = $val;
         	}
+
+            unset($_GET, $_POST, $_REQUEST, $_FILES, $_COOKIE);
         }
     }

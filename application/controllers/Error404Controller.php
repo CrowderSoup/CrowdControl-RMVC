@@ -22,14 +22,9 @@
          * index()
          * 
          * The index action for our controller
-         * 
-         * @param array $URIdata
          */
-        public function index($URIdata)
+        public function index()
         {
-            if(!empty($URIdata) && is_array($URIdata))
-                $data['URIdata'] = $URIdata;
-
             $data['pageTitle'] = 'Home';
             $data['styles'] = $this->registry->styles;
             $data['js'] = $this->registry->js;
