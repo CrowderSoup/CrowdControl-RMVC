@@ -39,7 +39,7 @@
         </div>
         <div class="span4">
             <h2>MySQL</h2>
-            <p>CrowdControl has MySQL support out of the box, however, support
+            <p>CrowdControl has MySQL support out of the box. However, support
             for more database engines is planned.</p>
         </div>
     </div>

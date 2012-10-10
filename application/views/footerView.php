@@ -8,7 +8,12 @@
         <hr/>
         <footer>
             Copyright &copy; <a href="http://aaroncrowder.com" target="_blank">Aaron Crowder</a>
-            <h6>Request</h6><?= util::var_dump($request) ?>
+            <?php
+                if(DEBUGMODE) {
+                    echo "<h4>Debug</h4>";
+                    util::var_dump($registry);
+                }
+            ?>
         </footer>
     </div> <!-- /container -->
     <?php 

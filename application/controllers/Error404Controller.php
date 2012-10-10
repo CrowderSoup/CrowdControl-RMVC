@@ -25,6 +25,10 @@
          */
         public function index()
         {
+            if(DEBUGMODE) {
+                $data['registry'] = $this->registry;
+            }
+                
             $data['pageTitle'] = 'Home';
             $data['styles'] = $this->registry->styles;
             $data['js'] = $this->registry->js;

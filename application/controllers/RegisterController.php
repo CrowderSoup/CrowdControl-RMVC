@@ -22,6 +22,10 @@
             $auth = new Auth($this->registry->database);
 
             if(!$auth->loggedIn) {
+                if(DEBUGMODE) {
+                    $data['registry'] = $this->registry;
+                }
+                
                 $data['pageTitle'] = 'Login';
                 $data['styles'] = $this->registry->styles;
                 $data['js'] = $this->registry->js;
@@ -40,6 +44,10 @@
             $auth = new Auth($this->registry->database);
 
             if(!$auth->loggedIn) {
+                if(DEBUGMODE) {
+                    $data['registry'] = $this->registry;
+                }
+                
                 $data['pageTitle'] = 'Login';
                 $data['styles'] = $this->registry->styles;
                 $data['js'] = $this->registry->js;

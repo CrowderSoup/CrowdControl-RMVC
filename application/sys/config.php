@@ -15,7 +15,7 @@
     /**
      * @const string Set the basepath (the base filesystem path of the application)
      */
-    const BASEPATH = '/home/aaron/Sites/CrowdControlMVC/';
+    const BASEPATH = '/Users/aaron/Sites/CrowdControl-RMVC/';
     
     /**
      * @const string Set the base uri (the root URL of the application)
@@ -42,6 +42,11 @@
     const INDEXACTION = 'index';
 
     /**
+     * @const boolean Debug Mode
+     */
+    const DEBUGMODE = true;
+
+    /**
      * System variables
      * 
      * System variables are used in the interest of performace and are passed
@@ -58,9 +63,9 @@
      */
     $database = array (
         'host'      => '127.0.0.1',
-        'database'  => 'CrowdControlMVC',
+        'database'  => 'CrowdControl',
         'user'      => 'root',
-        'password'  => 'p@ssw0rd'
+        'password'  => ''
     );
     
     /**
