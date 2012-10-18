@@ -57,7 +57,7 @@
         		$this->COOKIE[$key] = $val;
         	}
 
-            unset($_GET, $_POST, $_REQUEST, $_FILES, $_COOKIE);
+            unset($_GET, $_POST, $_REQUEST, $_FILES);
         }
 
         private function GETData()

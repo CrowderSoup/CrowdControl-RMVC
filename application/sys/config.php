@@ -63,9 +63,9 @@
      */
     $database = array (
         'host'      => '127.0.0.1',
-        'database'  => 'CrowdControl',
+        'database'  => 'CrowdControlMVC',
         'user'      => 'root',
-        'password'  => ''
+        'password'  => 'p@ssw0rd'
     );
     
     /**
@@ -75,3 +75,6 @@
     $styles = array(BASECSSURI . 'bootstrap.min.css', BASECSSURI . 'bootstrap-responsive.min.css', BASECSSURI . 'style.css');
     
     $js = array(BASEJSURI . 'bootstrap.min.js');
+
+    /* DO NO MODIFY ANYTHING BELOW THIS LINE! */
+    

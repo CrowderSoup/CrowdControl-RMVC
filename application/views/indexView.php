@@ -13,9 +13,20 @@
 ?>
 
     <div class="hero-unit">
-        <h1>Starter Template</h1>
-        <p>Use this as a way to quick start any new CrowdControl RMVC project. 
-        All you get is this message and an awesome PHP framework.</p>
+        <?php
+            if($loggedIn):
+        ?>
+            <h1>Welcome Back!</h1>
+            <p>Thank you for logging in!</p>
+        <?php
+            else:
+        ?>
+            <h1>Starter Template</h1>
+            <p>Use this as a way to quick start any new CrowdControl RMVC project. 
+            All you get is this message and an awesome PHP framework.</p>
+        <?php
+            endif;
+        ?>
     </div>
     
     <div class="row">

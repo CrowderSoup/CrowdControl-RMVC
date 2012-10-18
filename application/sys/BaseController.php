@@ -18,6 +18,7 @@
         protected $model;
         protected $view;
         protected $repository;
+        protected $auth;
 
         function __construct($registry)
         {
@@ -31,6 +32,8 @@
                     include $file;
                 }
             }
+
+            $this->auth = new Auth($this->registry->database);
             
             // Include our Repository
             require_once 'application/models/Repository.php';

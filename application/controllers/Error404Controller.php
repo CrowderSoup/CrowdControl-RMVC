@@ -32,6 +32,7 @@
             $data['pageTitle'] = 'Home';
             $data['styles'] = $this->registry->styles;
             $data['js'] = $this->registry->js;
+            $data['loggedIn'] = $this->auth->loggedIn;
 
             $this->view->show('header', $data);
             $this->view->show('404', $data);

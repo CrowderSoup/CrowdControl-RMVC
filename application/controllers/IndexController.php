@@ -28,6 +28,8 @@
             $data['js'] = $this->registry->js;
             $data['request'] = $this->registry->request;
 
+            $data['loggedIn'] = $this->auth->loggedIn;
+
             $this->view->show('header', $data);
             $this->view->show('index', $data);
             $this->view->show('footer', $data);

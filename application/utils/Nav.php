@@ -36,7 +36,7 @@ class Nav
 							'><a href="' . 
 							BASEURI . 
 							$value[0] . 
-							(($value[1] == 'index') ? '' : $value[1]) . 
+							(($value[1] == 'index') ? '' : '/' . $value[1]) . 
 							'">' . $key . '</a></li>';
 			}
 

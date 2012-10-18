@@ -42,21 +42,25 @@ class Auth
     {
         include_once('application/models/UserModel.php');
         $this->db = new Database($database['host'], $database['database'], $database['user'], $database['password']);
-        
-        if(session_start() && isset($_SESSION['uid'])) {
+
+        session_start();
+
+        if(isset($_SESSION['uid'])) {
             try {
                 $results = $this->db->select('sessions', array('*'), array('fk_uid' => $_SESSION['uid']));
-                
+
                 if($results) {
                     $this->session = $results[0];
                     
-                    if($this->session['ip'] == $_SERVER['REMOTE_ADDR'] && strtotime($this->session['exp_date']) <= time()) {
+                    if($this->session['ip'] == $_SERVER['REMOTE_ADDR'] && strtotime($this->session['exp_date']) >= time()) {
                         $this->loggedIn = true;
                     }
                 }
             } catch(Exception $e) {
                 echo "Caught Exception: " . $e->getMessage();
             }
+        } else {
+
         }
     }
     
@@ -74,14 +78,23 @@ class Auth
         
         if (!empty($results)) {
             $hashArray = $this->HashPass($password, $results[0]['salt']);
-            
+
             if($hashArray[0] == $results[0]['password']) {
                 $this->loggedIn = true;
-                $_SESSION['uid'] = $this->User->pkid;
+
+                session_start();
+
+                $_SESSION['uid'] = $results[0]['pkid'];
+
+                $session = $this->db->select('sessions', array('*'), array('fk_uid' => $_SESSION['uid']));
+                if($session) {
+                    $this->db->update('sessions', array('ip' => $_SERVER['REMOTE_ADDR'], 'exp_date' => date('Y-m-d H:i:s', time() + 1209600)), array('fk_uid' => $_SESSION['uid']));
+                } else {
+                    $result = $this->db->insert("sessions", array('fk_uid' => $_SESSION['uid'], 'ip' => $_SERVER['REMOTE_ADDR'], 'exp_date' => date('Y-m-d H:i:s', time() + 1209600)));
                 
-                $result = $this->db->insert("sessions", array('fk_uid' => $_SESSION['uid'], 'ip' => $_SERVER['REMOTE_ADDR'], 'exp_date' => date('Y-m-d H:i:s', time() + 1209600)));
-                if(!$result) {
-                    return false;
+                    if(!$result) {
+                        return false;
+                    }
                 }
                 
                 return $this->loggedIn;
@@ -100,8 +113,10 @@ class Auth
      */
     public function LogOut()
     {
+        $uid = $_SESSION['uid'];
+
         if(session_destroy()) {
-            $result = $this->db->delete('sessions', array('fk_uid' => $_SESSION['uid']));
+            $result = $this->db->delete('sessions', array('fk_uid' => $uid));
             if($result) {
                 return true;
             } else {

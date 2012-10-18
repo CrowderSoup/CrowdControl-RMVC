@@ -19,12 +19,22 @@
         </div>
         <div class="span9">
             <h2>Login</h2>
-            <form id="LoginForm" method="POST" action="<?= BASEURI ?>login/do_login">
+            <?php
+                if($loggedIn):
+            ?>
+                <p>Thank you for logging in!</p>
+            <?php
+                else:
+            ?>
+            <form id="LoginForm" method="POST" action="<?= BASEURI ?>login/do">
                 <input type="text" name="username" id="username" placeholder="User Name" /><br/>
                 <input type="password" name="password" id="password" placeholder="Password" /><br/>
 
                 <input type="submit" class="btn btn-primary" value="Login" />
                 <button class="btn btn-danger">Cancel</button>
             </form>
+            <?php
+                endif;
+            ?>
         </div>
     </div>

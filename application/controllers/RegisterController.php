@@ -19,9 +19,7 @@
          */
         public function index()
         {
-            $auth = new Auth($this->registry->database);
-
-            if(!$auth->loggedIn) {
+            if(!$this->auth->loggedIn) {
                 if(DEBUGMODE) {
                     $data['registry'] = $this->registry;
                 }
@@ -41,9 +39,7 @@
 
         public function do_reg()
         {
-            $auth = new Auth($this->registry->database);
-
-            if(!$auth->loggedIn) {
+            if(!$this->auth->loggedIn) {
                 if(DEBUGMODE) {
                     $data['registry'] = $this->registry;
                 }
@@ -53,8 +49,14 @@
                 $data['js'] = $this->registry->js;
                 $data['request'] = $this->registry->request;
 
+                if($this->auth->RegisterUser($data['request']->POST['username'], $data['request']->POST['password'], $data['request']->POST['email'])) {
+                    $data['registered'] = true;
+                } else {
+                    $data['registered'] = false;
+                }
+
                 $this->view->show('header', $data);
-                $this->view->show('register', $data);
+                $this->view->show('registerDone', $data);
                 $this->view->show('footer', $data);
             } else {
                 header('Location: ' . BASEURI);

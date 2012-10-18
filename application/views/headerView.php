@@ -39,9 +39,9 @@
                         <?= Nav::BuildMainNav(array(
                                                     'Home' => array('index', 
                                                                     'index'), 
-                                                    'Login' => array('login',
-                                                                     'index'),
-                                                    'test' => array('test',
+                                                    ($loggedIn ? 'Logout' : 'Login') => array('login',
+                                                                     ($loggedIn ? 'logout' : 'index')),
+                                                    '404' => array('test-404',
                                                                     'index')), $URIdata) ?>
                     </ul>
                 </div><!--/.nav-collapse -->
