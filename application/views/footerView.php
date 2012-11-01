@@ -18,7 +18,7 @@
     </div> <!-- /container -->
     <?php 
         foreach($js as $script) {
-            echo '<script type="text/javascript" scr="' . $script . '"></script>';
+            echo '<script src="' . $script . '"></script>';
         }
     ?>
     </body>
