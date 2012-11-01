@@ -19,20 +19,14 @@ class Nav
 	 * @param array $links
 	 * @param array $URIdata
 	 */
-	public static function BuildMainNav($links, $URIdata)
+	public static function BuildMainNav($links, $curPage)
 	{
 		if(is_array($links)) {
 			$strHTML = '';
 
-			if(!empty($URIdata) && is_array($URIdata)) {
-				$curPage = strtolower($URIdata[0]);
-			} else {
-				$curPage = '';
-			}
-
 			foreach ($links as $key => $value) {
 				$strHTML .= '<li' . 
-							(($value[0] == $curPage) ? ' class="active"' : '') . 
+							(($value[0] == strtolower($curPage)) ? ' class="active"' : '') . 
 							'><a href="' . 
 							BASEURI . 
 							$value[0] . 

@@ -42,7 +42,7 @@
                                                     ($loggedIn ? 'Logout' : 'Login') => array('login',
                                                                      ($loggedIn ? 'logout' : 'index')),
                                                     '404' => array('test-404',
-                                                                    'index')), $URIdata) ?>
+                                                                    'index')), $request->GET['Controller']) ?>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
