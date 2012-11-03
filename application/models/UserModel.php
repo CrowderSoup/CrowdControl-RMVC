@@ -20,6 +20,16 @@
         /**
          * @var string
          */
+        public $fName;
+
+        /**
+         * @var string
+         */
+        public $lName;
+
+        /**
+         * @var string
+         */
         public $uName;
         
         /**
@@ -36,7 +46,12 @@
          * @var string
          */
         public $salt;
-        
+
+        /**
+         * @var json
+         */
+        public $jsonSettings;
+
         /**
          * __construct()
          * 
@@ -48,12 +63,15 @@
          * @param string $email
          * @param string $salt
          */
-        function __construct($pkid, $uName, $password, $email, $salt)
+        function __construct($pkid, $fName, $lName, $uName, $password, $email, $salt, $jsonSettings)
         {
             $this->pkid = $pkid;
+            $this->fName = $fName;
+            $this->lName = $lName;
             $this->uName = $uName;
             $this->password = $password;
             $this->email = $email;
             $this->salt = $salt;
+            $this->jsonSettings = $jsonSettings;
         }
     }

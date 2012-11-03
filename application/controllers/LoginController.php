@@ -29,9 +29,9 @@
                 $data['js'] = $this->registry->js;
                 $data['request'] = $this->registry->request;
 
-                $this->view->show('header', $data);
-                $this->view->show('login', $data);
-                $this->view->show('footer', $data);
+                $this->view->show('Core/header', $data);
+                $this->view->show('Login/login', $data);
+                $this->view->show('Core/footer', $data);
             } else {
                 header('Location: ' . BASEURI);
             }
@@ -60,9 +60,9 @@
                     $data['loggedIn'] = $this->auth->loggedIn;
                 }
 
-                $this->view->show('header', $data);
-                $this->view->show('loginDone', $data);
-                $this->view->show('footer', $data);
+                $this->view->show('Core/header', $data);
+                $this->view->show('Login/loginDone', $data);
+                $this->view->show('Core/footer', $data);
             } else {
                 header('Location: ' . BASEURI);
             }

@@ -29,9 +29,9 @@
                 $data['js'] = $this->registry->js;
                 $data['request'] = $this->registry->request;
 
-                $this->view->show('header', $data);
-                $this->view->show('register', $data);
-                $this->view->show('footer', $data);
+                $this->view->show('Core/header', $data);
+                $this->view->show('Register/register', $data);
+                $this->view->show('Core/footer', $data);
             } else {
                 header('Location: ' . BASEURI);
             }
@@ -55,9 +55,9 @@
                     $data['registered'] = false;
                 }
 
-                $this->view->show('header', $data);
-                $this->view->show('registerDone', $data);
-                $this->view->show('footer', $data);
+                $this->view->show('Core/header', $data);
+                $this->view->show('Register/registerDone', $data);
+                $this->view->show('Core/footer', $data);
             } else {
                 header('Location: ' . BASEURI);
             }

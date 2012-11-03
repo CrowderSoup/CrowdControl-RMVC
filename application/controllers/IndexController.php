@@ -29,9 +29,12 @@
             $data['request'] = $this->registry->request;
 
             $data['loggedIn'] = $this->auth->loggedIn;
+            if($data['loggedIn']) {
+                $data['User'] = $this->repository->getUserByID($_SESSION['uid']);
+            }
 
-            $this->view->show('header', $data);
-            $this->view->show('index', $data);
-            $this->view->show('footer', $data);
+            $this->view->show('Core/header', $data);
+            $this->view->show('Index/index', $data);
+            $this->view->show('Core/footer', $data);
         }
     }
