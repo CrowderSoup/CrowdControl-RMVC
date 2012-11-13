@@ -74,7 +74,7 @@
      */
     $styles = array(BASECSSURI . 'bootstrap.min.css', BASECSSURI . 'style.css', BASECSSURI . 'bootstrap-responsive.min.css');
     
-    $js = array('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', BASEJSURI . 'bootstrap.min.js');
+    $js = array('//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', BASEJSURI . 'bootstrap.min.js', BASEJSURI . 'app.js');
 
     /* DO NO MODIFY ANYTHING BELOW THIS LINE! */
     

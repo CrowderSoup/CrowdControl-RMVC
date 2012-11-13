@@ -24,7 +24,7 @@
          */
         public function route($registry)
         {
-            $file = 'application/controllers/' . $registry->request->GET['Controller'] . 'Controller.php';
+            $file = 'application/controllers/' . $registry->request->GET['Dir'] . $registry->request->GET['Controller'] . 'Controller.php';
             if (is_readable($file)) {
                 include $file;
                 $class = $registry->request->GET['Controller'] . 'Controller';

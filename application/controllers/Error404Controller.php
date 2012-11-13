@@ -36,8 +36,8 @@
             
             $data['loggedIn'] = $this->auth->loggedIn;
 
-            $this->view->show('header', $data);
-            $this->view->show('404', $data);
-            $this->view->show('footer', $data);
+            $this->view->show('Core/header', $data);
+            $this->view->show('Core/404', $data);
+            $this->view->show('Core/footer', $data);
         }
     }

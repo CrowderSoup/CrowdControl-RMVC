@@ -27,7 +27,7 @@
                 <input type="password" name="password" id="password2" placeholder="Repeat Password" /><br/>
 
                 <input type="submit" class="btn btn-primary" value="Register" />
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" onclick="cancelForm('RegisterForm'); return false;">Cancel</button>
             </form>
         </div>
     </div>

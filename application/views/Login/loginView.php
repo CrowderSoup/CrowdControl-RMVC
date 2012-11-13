@@ -24,7 +24,7 @@
                 <input type="password" name="password" id="password" placeholder="Password" /><br/>
 
                 <input type="submit" class="btn btn-primary" value="Login" />
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" onclick="cancelForm('LoginForm'); return false;">Cancel</button>
             </form>
         </div>
     </div>

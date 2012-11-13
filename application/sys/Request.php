@@ -68,12 +68,30 @@
 
             $gData = explode('/',trim($request,'/'));
             $iCount = count($gData);
+            $actionIndex = 0;
 
-            $this->GET['Controller'] = !empty($gData[0]) ? ucfirst($gData[0]) : INDEXCONTROLLER;
-            $this->GET['Action'] = !empty($gData[1]) ? $gData[1] : INDEXACTION;
+            $controller = null;
+            $action = null;
+            $dir = '';
 
-            for($i = 2; $i < $iCount; $i++) {
-                $this->GET['gData_' . ($i - 2)] = $gData[$i];
+            foreach ($gData as $key => $value) {
+                if(is_dir('application/controllers/' . $value)) {
+                    $dir .= $value . '/';
+                    continue;
+                } elseif (is_readable('application/controllers/' . $dir . ucfirst($value) . 'Controller.php')) {
+                    $controller = ucfirst($value);
+
+                    $actionIndex = $key + 1;
+                    $action = $gData[$actionIndex];
+                    break;
+                }
+            }
+            $this->GET['Controller'] = ($controller != null) ? $controller : INDEXCONTROLLER;
+            $this->GET['Action'] = ($action != null) ? $action : INDEXACTION;
+            $this->GET['Dir'] = $dir;
+
+            for($i = $actionIndex + 1; $i < $iCount; $i++) {
+                $this->GET['gData_' . ($i)] = $gData[$i];
             }
         }
     }
